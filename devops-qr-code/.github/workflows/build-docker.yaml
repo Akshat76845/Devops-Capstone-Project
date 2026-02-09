@@ -1,14 +1,27 @@
-name: Build and Publish image to Docker Hub
+name: Build and Push Docker Images
 on: 
+  push: 
+    branches: [ "master" ]
 
 jobs: 
-  publish_images: 
+  build: 
     runs-on: ubuntu-latest
     steps: 
-      - name: checkout 
-        uses: actions/checkout@v4
-      - name: build image 
-        run: docker build ./api/ -t akshat321123/api:latest 
-      - name: push image to docker hub
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with: 
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN}}
+
+      - name: Build FastAPI Image
         run: |
-        docker push akshat321123/api:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/api:latest ./api
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/api:latest
+
+      # Build & push Next.js
+      - name: Build Next.js Image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend-nextjs:latest ./front-end-nextjs
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
