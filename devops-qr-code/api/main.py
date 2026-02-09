@@ -12,7 +12,7 @@ load_dotenv()
 app = FastAPI()  
 
 # Allowing CORS for local testing
-origins = [
+origins = [ 
     "http://localhost:3000"
 ]
 
