@@ -25,16 +25,3 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend-nextjs:latest ./front-end-nextjs
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend-nextjs:latest
-
-      - name: Setup Kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_DATA }}" | base64 --decode > $HOME/.kube/config
-      
-
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl set image deployment/fastapi-deployment fastapi=${{ secrets.DOCKERHUB_USERNAME }}/api:latest
-          kubectl set image deployment/nextjs-deployment nextjs=${{ secrets.DOCKERHUB_USERNAME }}/frontend-nextjs:latest
-          kubectl rollout status deployment/fastapi-deployment
-          kubectl rollout status deployment/nextjs-deployment
