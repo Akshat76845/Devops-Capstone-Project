@@ -20,8 +20,8 @@ payments, and tracking.
 - CI/CD: GitHub Actions
 
 ## Architecture Overview
-Frontend (Next.js) → Backend 
-CI/CD → Docker Image → Kubernetes Deployment
+Frontend → Backend API  
+CI/CD → Docker Images → Kubernetes
 
 ## Running Locally
 ```bash
