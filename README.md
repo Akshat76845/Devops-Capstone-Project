@@ -71,19 +71,7 @@ The front-end code exits in the `front-end-nextjs` directory. You can run the fr
 - Make sure you are in the `front-end-nextjs` directory
 - Install the dependencies: `npm install`
 - Run the NextJS Server: `npm run dev`
-- Your Front-end Server should be running on `http://localhost:3000`
-
-
-## Goal
-
-The goal is to get hands-on with DevOps practices like Containerization, CICD and monitoring.
-
-Look at the capstone project for more detials.
-
-## Author
-
-[Rishab Kumar](https://github.com/rishabkumar7)
-
+- Your Front-end Server should be running on `http://localhost:3000
 ## License
 
 [MIT](./LICENSE)
