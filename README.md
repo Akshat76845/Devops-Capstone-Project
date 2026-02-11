@@ -34,4 +34,4 @@ It is designed to show skills in:
 
 ## Run locally
 ```bash
-docker compose up
+docker compose -f docker-compose-prod.yaml up
